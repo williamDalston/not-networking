@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { createErrorResponse, validateRequired } from '@/lib/error-handler'
 
-export async function GET(request: NextRequest) {
+export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url)
     const status = searchParams.get('status') || 'published'
@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request) {
   try {
     const body = await request.json()
     const { title, description, event_type, location, virtual_link, start_time, end_time, max_attendees, organizer_id } = body

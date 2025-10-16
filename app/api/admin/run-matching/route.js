@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { runMatchingPipeline } from '@/lib/matching'
 import { createErrorResponse } from '@/lib/error-handler'
 
-export async function POST(request: NextRequest) {
+export async function POST(request) {
   try {
     const results = await runMatchingPipeline()
 

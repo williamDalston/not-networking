@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { submitMatchFeedback } from '@/lib/matching'
 import { createErrorResponse, validateRequired } from '@/lib/error-handler'
 
-export async function POST(request: NextRequest) {
+export async function POST(request) {
   try {
     const body = await request.json()
     const { matchId, userId, feedback } = body

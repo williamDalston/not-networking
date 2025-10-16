@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { createErrorResponse } from '@/lib/error-handler'
 
-export async function GET(request: NextRequest, { params }) {
+export async function GET(request, { params }) {
   try {
     const { id } = params
 
@@ -31,7 +31,7 @@ export async function GET(request: NextRequest, { params }) {
   }
 }
 
-export async function PUT(request: NextRequest, { params }) {
+export async function PUT(request, { params }) {
   try {
     const { id } = params
     const body = await request.json()

@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { generateUserEmbeddings } from '@/lib/embeddings'
 import { createErrorResponse, validateRequired } from '@/lib/error-handler'
 
-export async function POST(request: NextRequest) {
+export async function POST(request) {
   try {
     const body = await request.json()
     const { userId } = body

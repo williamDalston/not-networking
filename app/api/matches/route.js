@@ -1,9 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { generateMatches, getMatchesForUser, updateMatchStatus } from '@/lib/matching'
 import { createErrorResponse, validateRequired } from '@/lib/error-handler'
 
-export async function GET(request: NextRequest) {
+export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url)
     const userId = searchParams.get('userId')
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(request) {
   try {
     const body = await request.json()
     const { userId, limit = 3 } = body

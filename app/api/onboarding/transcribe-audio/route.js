@@ -1,12 +1,12 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import OpenAI from 'openai'
 import { createErrorResponse, validateRequired } from '@/lib/error-handler'
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY || 'placeholder-key',
 })
 
-export async function POST(request: NextRequest) {
+export async function POST(request) {
   try {
     const formData = await request.formData()
     const audioFile = formData.get('audio')

@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { createErrorResponse } from '@/lib/error-handler'
 
-export async function GET(request: NextRequest) {
+export async function GET(request) {
   try {
     // Get system health metrics
     const [

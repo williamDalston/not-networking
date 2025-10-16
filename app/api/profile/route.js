@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import { supabaseAdmin } from '@/lib/supabase'
 import { createErrorResponse, validateRequired, validateEmail, validatePassword } from '@/lib/error-handler'
 
-export async function GET(request: NextRequest) {
+export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url)
     const userId = searchParams.get('userId')
@@ -30,7 +30,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function PUT(request: NextRequest) {
+export async function PUT(request) {
   try {
     const body = await request.json()
     const { userId, ...profileData } = body
