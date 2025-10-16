@@ -93,6 +93,12 @@ export default function LandingPage() {
                 <Link href="/auth/signup" className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
                   Get Started
                 </Link>
+                <Link href="/dashboard" className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                  Dashboard
+                </Link>
+                <Link href="/onboarding" className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                  Onboarding
+                </Link>
               </div>
             </div>
 
