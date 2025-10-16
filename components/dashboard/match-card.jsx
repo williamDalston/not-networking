@@ -26,11 +26,11 @@ export default function MatchCard({ match, onAccept, onDecline, onViewDetails })
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto hover:shadow-lg transition-shadow">
+    <Card variant="glass" className="w-full max-w-md mx-auto card-hover group">
       <CardHeader className="pb-4">
         <div className="flex items-center space-x-4">
-          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-            <span className="text-green-600 font-semibold text-lg">
+          <div className="w-12 h-12 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900 dark:to-emerald-800 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+            <span className="text-emerald-600 dark:text-emerald-400 font-semibold text-lg">
               {otherUser?.full_name?.charAt(0) || '?'}
             </span>
           </div>
@@ -39,8 +39,11 @@ export default function MatchCard({ match, onAccept, onDecline, onViewDetails })
             <p className="text-sm text-gray-500">{otherUser?.email}</p>
           </div>
           <div className="text-right">
-            <div className="text-sm font-medium text-green-600">
-              {Math.round(match.match_score * 100)}% match
+            <div className="flex items-center justify-end mb-1">
+              <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></div>
+              <div className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
+                {Math.round(match.match_score * 100)}% match
+              </div>
             </div>
             <div className="text-xs text-gray-400">
               {formatRelativeTime(match.created_at)}
@@ -98,11 +101,12 @@ export default function MatchCard({ match, onAccept, onDecline, onViewDetails })
                   size="sm"
                   onClick={() => handleAction('decline')}
                   disabled={loading === 'decline'}
-                  className="flex-1"
+                  className="flex-1 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   {loading === 'decline' ? 'Declining...' : 'Skip'}
                 </Button>
                 <Button
+                  variant="gradient"
                   size="sm"
                   onClick={() => handleAction('accept')}
                   disabled={loading === 'accept'}
@@ -115,7 +119,7 @@ export default function MatchCard({ match, onAccept, onDecline, onViewDetails })
             
             {isAccepted && (
               <div className="flex-1 text-center">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-emerald-100 to-emerald-200 text-emerald-800 dark:from-emerald-900 dark:to-emerald-800 dark:text-emerald-200">
                   ✓ Connected
                 </span>
               </div>
@@ -123,7 +127,7 @@ export default function MatchCard({ match, onAccept, onDecline, onViewDetails })
             
             {isDeclined && (
               <div className="flex-1 text-center">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-gray-100 to-gray-200 text-gray-800 dark:from-gray-700 dark:to-gray-600 dark:text-gray-200">
                   Skipped
                 </span>
               </div>
@@ -133,7 +137,7 @@ export default function MatchCard({ match, onAccept, onDecline, onViewDetails })
               variant="ghost"
               size="sm"
               onClick={() => onViewDetails(match.id)}
-              className="ml-2"
+              className="ml-2 hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               Details
             </Button>

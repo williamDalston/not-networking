@@ -64,23 +64,131 @@
 }
 
 @layer components {
+  /* Enhanced gradient styles */
   .gradient-text {
+    @apply bg-gradient-to-r from-emerald-600 via-emerald-500 to-gold-500 bg-clip-text text-transparent;
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  .gradient-text-static {
     @apply bg-gradient-to-r from-emerald-600 to-gold-600 bg-clip-text text-transparent;
   }
   
   .gradient-bg {
-    @apply bg-gradient-to-br from-emerald-50 to-gold-50 dark:from-emerald-900/10 dark:to-gold-900/10;
+    @apply bg-gradient-to-br from-emerald-50 via-white to-gold-50 dark:from-emerald-900/10 dark:via-gray-900 dark:to-gold-900/10;
   }
   
+  .gradient-bg-animated {
+    @apply bg-gradient-to-br from-emerald-50 via-white to-gold-50 dark:from-emerald-900/10 dark:via-gray-900 dark:to-gold-900/10;
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+  
+  /* Enhanced card styles */
   .card-hover {
-    @apply transition-all duration-200 hover:shadow-lg hover:scale-105;
+    @apply transition-all duration-300 hover:shadow-xl hover:shadow-emerald-500/10 hover:scale-[1.02] hover:-translate-y-1;
   }
   
+  .card-glow {
+    @apply shadow-lg shadow-emerald-500/10 border border-emerald-200/50 dark:border-emerald-800/50;
+  }
+  
+  .card-floating {
+    @apply card-hover card-glow animate-float;
+  }
+  
+  /* Enhanced button styles */
   .btn-primary {
-    @apply bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors;
+    @apply bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/25;
   }
   
   .btn-secondary {
-    @apply bg-white hover:bg-gray-50 text-gray-900 px-6 py-3 rounded-lg font-semibold border border-gray-300 transition-colors;
+    @apply bg-white hover:bg-gray-50 text-gray-900 px-6 py-3 rounded-xl font-semibold border border-gray-300 transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-gray-500/10;
+  }
+  
+  .btn-gradient {
+    @apply bg-gradient-to-r from-emerald-500 via-emerald-600 to-gold-500 hover:from-emerald-600 hover:via-emerald-700 hover:to-gold-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-emerald-500/25;
+  }
+  
+  .btn-magic {
+    @apply btn-gradient relative overflow-hidden;
+  }
+  
+  .btn-magic::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+  
+  .btn-magic:hover::before {
+    transform: translateX(100%);
+  }
+  
+  /* Glass morphism effects */
+  .glass {
+    @apply bg-white/10 dark:bg-gray-900/10 backdrop-blur-md border border-white/20 dark:border-gray-700/20;
+  }
+  
+  .glass-card {
+    @apply glass rounded-2xl shadow-xl shadow-black/5 dark:shadow-black/20;
+  }
+  
+  /* Interactive elements */
+  .interactive {
+    @apply transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+  
+  .interactive-glow {
+    @apply interactive hover:shadow-lg hover:shadow-emerald-500/20;
+  }
+  
+  /* Text effects */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Loading states */
+  .shimmer {
+    @apply relative overflow-hidden;
+  }
+  
+  .shimmer::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    animation: shimmer 2s infinite;
+  }
+  
+  /* Focus states */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900;
+  }
+  
+  /* Scrollbar styling */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(34 197 94) rgb(243 244 246);
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: rgb(243 244 246);
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: rgb(34 197 94);
+    border-radius: 3px;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: rgb(22 163 74);
   }
 }

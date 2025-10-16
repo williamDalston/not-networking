@@ -195,9 +195,14 @@ export default function DashboardPage() {
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="glass-card p-6 card-hover group"
+          >
             <div className="flex items-center">
-              <div className="p-3 bg-emerald-100 dark:bg-emerald-900 rounded-lg">
+              <div className="p-3 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900 dark:to-emerald-800 rounded-xl group-hover:scale-110 transition-transform duration-200">
                 <Users className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
               </div>
               <div className="ml-4">
@@ -205,35 +210,50 @@ export default function DashboardPage() {
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.totalConnections}</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="glass-card p-6 card-hover group"
+          >
             <div className="flex items-center">
-              <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg">
-                <Brain className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+              <div className="p-3 bg-gradient-to-br from-sky-100 to-sky-200 dark:from-sky-900 dark:to-sky-800 rounded-xl group-hover:scale-110 transition-transform duration-200">
+                <Brain className="h-6 w-6 text-sky-600 dark:text-sky-400" />
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400">AI Matches</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.aiMatches}</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="glass-card p-6 card-hover group"
+          >
             <div className="flex items-center">
-              <div className="p-3 bg-purple-100 dark:bg-purple-900 rounded-lg">
-                <Calendar className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+              <div className="p-3 bg-gradient-to-br from-violet-100 to-violet-200 dark:from-violet-900 dark:to-violet-800 rounded-xl group-hover:scale-110 transition-transform duration-200">
+                <Calendar className="h-6 w-6 text-violet-600 dark:text-violet-400" />
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Events</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.events}</p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="glass-card p-6 card-hover group"
+          >
             <div className="flex items-center">
-              <div className="p-3 bg-gold-100 dark:bg-gold-900 rounded-lg">
+              <div className="p-3 bg-gradient-to-br from-gold-100 to-gold-200 dark:from-gold-900 dark:to-gold-800 rounded-xl group-hover:scale-110 transition-transform duration-200">
                 <TrendingUp className="h-6 w-6 text-gold-600 dark:text-gold-400" />
               </div>
               <div className="ml-4">
@@ -241,13 +261,13 @@ export default function DashboardPage() {
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.growthScore}%</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Tabs */}
-        <div className="mb-6">
-          <div className="border-b border-gray-200 dark:border-gray-700">
-            <nav className="-mb-px flex space-x-8">
+        {/* Enhanced Tabs */}
+        <div className="mb-8">
+          <div className="glass-card p-2 rounded-xl">
+            <nav className="flex space-x-2">
               {[
                 { id: 'overview', label: 'Overview', icon: Target },
                 { id: 'matches', label: 'Matches', icon: Users },
@@ -257,10 +277,10 @@ export default function DashboardPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`py-2 px-1 border-b-2 font-medium text-sm flex items-center ${
+                  className={`py-3 px-4 rounded-lg font-medium text-sm flex items-center transition-all duration-200 ${
                     activeTab === tab.id
-                      ? 'border-emerald-500 text-emerald-600 dark:text-emerald-400'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300'
+                      ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-500/25'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-300 dark:hover:bg-gray-700'
                   }`}
                 >
                   <tab.icon className="h-4 w-4 mr-2" />
@@ -275,12 +295,17 @@ export default function DashboardPage() {
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Recent Matches */}
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600">
-              <div className="flex justify-between items-center mb-4">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="glass-card p-6 card-hover"
+            >
+              <div className="flex justify-between items-center mb-6">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Recent Matches</h3>
                 <button
                   onClick={generateNewMatches}
-                  className="text-sm text-emerald-600 hover:text-emerald-700 font-medium"
+                  className="text-sm text-emerald-600 hover:text-emerald-700 font-medium hover:scale-105 transition-transform"
                 >
                   Generate New
                 </button>
@@ -289,69 +314,115 @@ export default function DashboardPage() {
                 {matches.slice(0, 2).map((match) => {
                   const otherUser = match.user1_id === user.id ? match.user2 : match.user1
                   return (
-                    <div key={match.id} className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-600 rounded-lg">
-                      <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center">
-                        <span className="text-emerald-600 dark:text-emerald-400 font-semibold">
+                    <motion.div 
+                      key={match.id} 
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex items-center space-x-4 p-4 bg-gradient-to-r from-emerald-50 to-emerald-100 dark:from-emerald-900/20 dark:to-emerald-800/20 rounded-xl hover:shadow-md transition-all duration-200 group"
+                    >
+                      <div className="w-12 h-12 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900 dark:to-emerald-800 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                        <span className="text-emerald-600 dark:text-emerald-400 font-semibold text-lg">
                           {otherUser?.full_name?.charAt(0) || '?'}
                         </span>
                       </div>
                       <div className="flex-1">
                         <h4 className="font-semibold text-gray-900 dark:text-white">{otherUser?.full_name || 'Unknown User'}</h4>
                         <p className="text-sm text-gray-600 dark:text-gray-300">{otherUser?.email}</p>
-                        <p className="text-xs text-emerald-600 dark:text-emerald-400">{Math.round(match.match_score * 100)}% match</p>
+                        <div className="flex items-center mt-1">
+                          <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></div>
+                          <p className="text-xs text-emerald-600 dark:text-emerald-400 font-medium">{Math.round(match.match_score * 100)}% match</p>
+                        </div>
                       </div>
-                    </div>
+                    </motion.div>
                   )
                 })}
                 {matches.length === 0 && (
-                  <div className="text-center py-8">
-                    <p className="text-gray-500 dark:text-gray-400">No matches yet</p>
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-center py-8"
+                  >
+                    <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900 dark:to-emerald-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Users className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
+                    </div>
+                    <p className="text-gray-500 dark:text-gray-400 mb-4">No matches yet</p>
                     <button
                       onClick={generateNewMatches}
-                      className="mt-2 text-emerald-600 hover:text-emerald-700 font-medium"
+                      className="btn-primary text-sm"
                     >
                       Generate your first matches
                     </button>
-                  </div>
+                  </motion.div>
                 )}
               </div>
-            </div>
+            </motion.div>
 
             {/* Upcoming Events */}
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Upcoming Events</h3>
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="glass-card p-6 card-hover"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Upcoming Events</h3>
               <div className="space-y-4">
-                {events.slice(0, 3).map((event) => (
-                  <div key={event.id} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-600 rounded-lg">
-                    <div>
-                      <h4 className="font-semibold text-gray-900 dark:text-white">{event.title}</h4>
-                      <p className="text-sm text-gray-600 dark:text-gray-300">{new Date(event.start_time).toLocaleDateString()}</p>
+                {events.slice(0, 3).map((event, index) => (
+                  <motion.div 
+                    key={event.id} 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                    className="flex items-center justify-between p-4 bg-gradient-to-r from-violet-50 to-violet-100 dark:from-violet-900/20 dark:to-violet-800/20 rounded-xl hover:shadow-md transition-all duration-200 group"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-br from-violet-100 to-violet-200 dark:from-violet-900 dark:to-violet-800 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+                        <Calendar className="h-5 w-5 text-violet-600 dark:text-violet-400" />
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-gray-900 dark:text-white">{event.title}</h4>
+                        <p className="text-sm text-gray-600 dark:text-gray-300">{new Date(event.start_time).toLocaleDateString()}</p>
+                      </div>
                     </div>
                     <div className="text-right">
                       <p className="text-sm text-gray-600 dark:text-gray-300">{event.event_rsvps?.length || 0} attendees</p>
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gradient-to-r from-emerald-100 to-emerald-200 text-emerald-800 dark:from-emerald-900 dark:to-emerald-800 dark:text-emerald-200">
                         {event.status}
                       </span>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
                 {events.length === 0 && (
-                  <div className="text-center py-8">
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="text-center py-8"
+                  >
+                    <div className="w-16 h-16 bg-gradient-to-br from-violet-100 to-violet-200 dark:from-violet-900 dark:to-violet-800 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Calendar className="h-8 w-8 text-violet-600 dark:text-violet-400" />
+                    </div>
                     <p className="text-gray-500 dark:text-gray-400">No upcoming events</p>
-                  </div>
+                  </motion.div>
                 )}
               </div>
-            </div>
+            </motion.div>
           </div>
         )}
 
         {activeTab === 'matches' && (
-          <div className="space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="space-y-6"
+          >
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Your AI Matches</h2>
               <button
                 onClick={generateNewMatches}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                className="btn-gradient px-6 py-3"
               >
                 Generate New Matches
               </button>
@@ -373,19 +444,26 @@ export default function DashboardPage() {
                 ))}
               </div>
             ) : (
-              <div className="bg-white dark:bg-gray-700 p-8 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600 text-center">
-                <Brain className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">No matches yet</h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Complete your profile to get personalized AI matches
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+                className="glass-card p-12 text-center"
+              >
+                <div className="w-20 h-20 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900 dark:to-emerald-800 rounded-full flex items-center justify-center mx-auto mb-6 animate-heartbeat">
+                  <Brain className="h-10 w-10 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">No matches yet</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6 max-w-md mx-auto">
+                  Complete your profile to get personalized AI matches that will help you grow your professional network
                 </p>
                 <button
                   onClick={generateNewMatches}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+                  className="btn-gradient px-8 py-3"
                 >
                   Generate Matches
                 </button>
-              </div>
+              </motion.div>
             )}
           </div>
         )}
