@@ -183,10 +183,6 @@ module.exports = {
           '0%, 100%': { boxShadow: '0 0 20px rgba(34, 197, 94, 0.3)' },
           '50%': { boxShadow: '0 0 30px rgba(34, 197, 94, 0.6)' },
         },
-        'float': {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
         'wiggle': {
           '0%, 100%': { transform: 'rotate(-3deg)' },
           '50%': { transform: 'rotate(3deg)' },
@@ -227,7 +223,6 @@ module.exports = {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'bloom': 'bloom 0.6s ease-out',
         'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
-        'float': 'float 3s ease-in-out infinite',
         'wiggle': 'wiggle 1s ease-in-out infinite',
         'bounce-gentle': 'bounce-gentle 2s ease-in-out infinite',
         'shimmer': 'shimmer 2s linear infinite',
