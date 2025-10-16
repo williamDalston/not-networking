@@ -465,7 +465,7 @@ export default function DashboardPage() {
                 </button>
               </motion.div>
             )}
-          </div>
+          </motion.div>
         )}
 
         {activeTab === 'events' && (
