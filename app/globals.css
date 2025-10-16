@@ -79,6 +79,11 @@
   * {
     @apply border-gray-200;
   }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-background text-foreground;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -86,8 +91,104 @@
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
   }
-}
+  
+  /* Typography hierarchy */
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug tracking-tight;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl lg:text-3xl font-semibold leading-snug tracking-tight;
+  }
+  
+  h5 {
+    @apply text-lg md:text-xl lg:text-2xl font-semibold leading-snug tracking-tight;
+  }
+  
+  h6 {
+    @apply text-base md:text-lg lg:text-xl font-semibold leading-snug tracking-tight;
+  }
+  
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+  
+  .text-lead {
+    @apply text-lg md:text-xl lg:text-2xl leading-relaxed font-medium;
+  }
+  
+  .text-small {
+    @apply text-sm md:text-base leading-relaxed;
+  }
+  
+  .text-xs {
+    @apply text-xs md:text-sm leading-relaxed;
+  }
+  
+  /* Consistent spacing scale */
+  .section-padding {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+  
+  .section-padding-sm {
+    @apply py-8 md:py-12 lg:py-16;
+  }
+  
+  .section-padding-lg {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+  
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-max-width {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  .container-max-width-sm {
+    @apply max-w-4xl mx-auto;
+  }
+  
+  /* Responsive spacing utilities */
+  .mobile-padding {
+    @apply px-4 py-6 sm:px-6 sm:py-8 lg:px-8 lg:py-12;
+  }
+  
+  .mobile-margin {
+    @apply mx-4 my-6 sm:mx-6 sm:my-8 lg:mx-8 lg:my-12;
+  }
+  
+  .mobile-text {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+  
+  .mobile-heading {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
+  
+  /* Mobile-first responsive containers */
+  .responsive-container {
+    @apply w-full max-w-sm mx-auto px-4 sm:max-w-md sm:px-6 md:max-w-lg md:px-8 lg:max-w-xl lg:px-10 xl:max-w-2xl xl:px-12;
+  }
+  
+  .responsive-grid {
+    @apply grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3 lg:gap-8;
+  }
+  
+  .responsive-flex {
+    @apply flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 lg:space-x-6;
+  }
 
 @layer components {
   /* Enhanced gradient styles */
@@ -209,6 +310,47 @@
   /* Focus states */
   .focus-ring {
     @apply focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900;
+  }
+  
+  /* Accessibility improvements */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+    clip: rect(0, 0, 0, 0);
+  }
+  
+  .skip-link {
+    @apply absolute top-0 left-0 z-50 px-4 py-2 text-white bg-emerald-600 transform -translate-y-full focus:translate-y-0 transition-transform;
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .gradient-text {
+      @apply text-emerald-600 dark:text-emerald-400;
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+    }
+    
+    .glass {
+      @apply bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-pulse,
+    .animate-heartbeat {
+      animation: none;
+    }
+    
+    .gradient-text {
+      animation: none;
+    }
+    
+    .gradient-bg-animated {
+      animation: none;
+    }
   }
   
   /* Scrollbar styling */

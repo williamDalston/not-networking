@@ -38,13 +38,13 @@ export default function MatchCard({ match, onAccept, onDecline, onViewDetails })
             </span>
           </div>
           <div className="flex-1">
-            <CardTitle className="text-lg">{otherUser?.full_name || 'Unknown User'}</CardTitle>
-            <p className="text-sm text-gray-500">{otherUser?.email}</p>
+            <CardTitle className="text-sm">{otherUser?.full_name || 'Unknown User'}</CardTitle>
+            <p className="text-xs text-gray-500">{otherUser?.email}</p>
           </div>
           <div className="text-right">
             <div className="flex items-center justify-end mb-1">
               <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2 animate-pulse"></div>
-              <div className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
+              <div className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
                 {Math.round(match.match_score * 100)}% match
               </div>
             </div>
@@ -58,36 +58,36 @@ export default function MatchCard({ match, onAccept, onDecline, onViewDetails })
       <CardContent className="pt-0 relative z-10">
         <div className="space-y-4">
           <div>
-            <h4 className="font-medium text-gray-900 mb-2">Why this match?</h4>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <h4 className="text-sm font-medium text-gray-900 mb-2">Why this match?</h4>
+            <p className="text-xs text-gray-600 leading-relaxed">
               {match.explanation || 'This match shows potential for meaningful professional connection.'}
             </p>
           </div>
 
           {match.evidence && (
             <div>
-              <h4 className="font-medium text-gray-900 mb-2">Evidence</h4>
+              <h4 className="text-sm font-medium text-gray-900 mb-2">Evidence</h4>
               <div className="space-y-1">
                 {match.evidence.complementary_matches && (
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-xs text-gray-600">
                     <span className="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
                     Complementary skills and needs
                   </div>
                 )}
                 {match.evidence.shared_goals && (
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-xs text-gray-600">
                     <span className="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
                     Shared professional goals
                   </div>
                 )}
                 {match.evidence.aligned_values && (
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-xs text-gray-600">
                     <span className="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
                     Aligned values and principles
                   </div>
                 )}
                 {match.evidence.industry_overlap && (
-                  <div className="flex items-center text-sm text-gray-600">
+                  <div className="flex items-center text-xs text-gray-600">
                     <span className="w-2 h-2 bg-orange-400 rounded-full mr-2"></span>
                     Related industry experience
                   </div>

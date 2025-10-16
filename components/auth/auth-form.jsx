@@ -72,12 +72,12 @@ export default function AuthForm({ mode = 'signin' }) {
           <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-gold-500 rounded-2xl mx-auto mb-4 flex items-center justify-center">
             <span className="text-2xl">🌱</span>
           </div>
-          <CardTitle className="text-3xl font-bold gradient-text-emerald mb-2">
+          <CardTitle className="mb-2 gradient-text-emerald">
             {mode === 'signup' ? 'Join The Ecosystem' : 
              mode === 'signin' ? 'Welcome Back' : 
              'Reset Password'}
           </CardTitle>
-          <p className="text-gray-600 dark:text-gray-300">
+          <p className="text-small text-gray-600 dark:text-gray-300">
             {mode === 'signup' ? 'Create your account to get started' :
              mode === 'signin' ? 'Sign in to your account' :
              'Enter your email to reset your password'}
@@ -93,7 +93,7 @@ export default function AuthForm({ mode = 'signin' }) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label htmlFor="fullName" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Full Name
               </label>
               <div className="relative">
@@ -116,7 +116,7 @@ export default function AuthForm({ mode = 'signin' }) {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: mode === 'signup' ? 0.2 : 0.1 }}
           >
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            <label htmlFor="email" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">
               Email Address
             </label>
             <div className="relative">
@@ -139,7 +139,7 @@ export default function AuthForm({ mode = 'signin' }) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: mode === 'signup' ? 0.3 : 0.2 }}
             >
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label htmlFor="password" className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Password
               </label>
               <div className="relative">
@@ -194,13 +194,13 @@ export default function AuthForm({ mode = 'signin' }) {
         >
           {mode === 'signin' && (
             <>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-xs text-gray-600 dark:text-gray-400">
                 Don't have an account?{' '}
                 <Link href="/auth/signup" className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors">
                   Sign up
                 </Link>
               </p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-xs text-gray-600 dark:text-gray-400">
                 <Link href="/auth/reset-password" className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors">
                   Forgot your password?
                 </Link>
@@ -209,7 +209,7 @@ export default function AuthForm({ mode = 'signin' }) {
           )}
           
           {mode === 'signup' && (
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-xs text-gray-600 dark:text-gray-400">
               Already have an account?{' '}
               <Link href="/auth/signin" className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors">
                 Sign in
@@ -218,7 +218,7 @@ export default function AuthForm({ mode = 'signin' }) {
           )}
           
           {mode === 'reset' && (
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-xs text-gray-600 dark:text-gray-400">
               Remember your password?{' '}
               <Link href="/auth/signin" className="text-emerald-600 hover:text-emerald-700 font-medium transition-colors">
                 Sign in

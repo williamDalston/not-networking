@@ -61,9 +61,17 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen gradient-bg-animated">
+      {/* Skip Links for Accessibility */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
+      <a href="#navigation" className="skip-link" style={{ top: '3rem' }}>
+        Skip to navigation
+      </a>
+      
       {/* Navigation */}
-      <nav className="relative z-50 glass border-b border-white/20 dark:border-gray-700/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav id="navigation" className="relative z-50 glass border-b border-white/20 dark:border-gray-700/20">
+        <div className="container-max-width container-padding">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
@@ -105,7 +113,9 @@ export default function LandingPage() {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 p-2"
+                className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 p-2 focus-ring"
+                aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-expanded={isMenuOpen}
               >
                 <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -116,8 +126,33 @@ export default function LandingPage() {
         </div>
       </nav>
 
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden glass border-b border-white/20 dark:border-gray-700/20" role="navigation" aria-label="Mobile navigation">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            <Link href="#features" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-emerald-600 rounded-md text-base font-medium">
+              Features
+            </Link>
+            <Link href="#testimonials" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-emerald-600 rounded-md text-base font-medium">
+              Testimonials
+            </Link>
+            <Link href="#pricing" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-emerald-600 rounded-md text-base font-medium">
+              Pricing
+            </Link>
+            <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
+              <Link href="/auth/signin" className="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-emerald-600 rounded-md text-base font-medium">
+                Sign In
+              </Link>
+              <Link href="/auth/signup" className="block px-3 py-2 btn-primary text-base font-medium mt-2">
+                Get Started
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
-      <section className="relative overflow-hidden">
+      <main id="main-content" className="relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-300/20 rounded-full blur-3xl animate-float"></div>
@@ -125,7 +160,7 @@ export default function LandingPage() {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-violet-300/10 rounded-full blur-3xl animate-pulse"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 relative z-10">
+        <div className="container-max-width container-padding section-padding relative z-10">
           <div className="text-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -142,7 +177,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white mb-6 text-shadow"
+              className="mb-6 text-shadow"
             >
               AI-Powered Professional
               <span className="block gradient-text text-glow">Networking</span>
@@ -152,7 +187,7 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+              className="text-lead text-gray-600 dark:text-gray-300 mb-8 container-max-width-sm"
             >
               Connect with like-minded professionals through intelligent matching and ecosystem visualization. 
               Built on SAM AI discovery and growth circles.
@@ -195,11 +230,11 @@ export default function LandingPage() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </main>
 
       {/* Features Section */}
-      <section id="features" className="py-20 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="features" className="section-padding bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm">
+        <div className="container-max-width container-padding">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -207,10 +242,10 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-shadow">
+            <h2 className="mb-4 text-shadow">
               How The Ecosystem Works
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lead text-gray-600 dark:text-gray-300 container-max-width-sm">
               Six core principles that make networking meaningful, not transactional
             </p>
           </motion.div>
@@ -229,11 +264,11 @@ export default function LandingPage() {
                   <div className="p-3 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900 dark:to-emerald-800 rounded-xl group-hover:scale-110 transition-transform duration-200">
                     <feature.icon className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
                   </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white ml-3">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white ml-3">
                     {feature.title}
                   </h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                <p className="text-small text-gray-600 dark:text-gray-300">
                   {feature.description}
                 </p>
               </motion.div>
@@ -243,8 +278,8 @@ export default function LandingPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 gradient-bg-animated">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="testimonials" className="section-padding gradient-bg-animated">
+        <div className="container-max-width container-padding">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -252,10 +287,10 @@ export default function LandingPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-shadow">
+            <h2 className="mb-4 text-shadow">
               What Our Community Says
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lead text-gray-600 dark:text-gray-300 container-max-width-sm">
               Real stories from professionals who've found meaningful connections
             </p>
           </motion.div>
@@ -272,7 +307,7 @@ export default function LandingPage() {
               >
                 <div className="mb-4">
                   <div className="text-emerald-500 text-2xl mb-2">"</div>
-                  <blockquote className="text-gray-600 dark:text-gray-300 italic leading-relaxed">
+                  <blockquote className="text-small text-gray-600 dark:text-gray-300 italic">
                     {testimonial.quote}
                   </blockquote>
                   <div className="text-emerald-500 text-2xl text-right">"</div>
@@ -287,7 +322,7 @@ export default function LandingPage() {
                     <div className="font-semibold text-gray-900 dark:text-white">
                       {testimonial.author}
                     </div>
-                    <div className="text-sm text-gray-500 dark:text-gray-400">
+                    <div className="text-xs text-gray-500 dark:text-gray-400">
                       {testimonial.role}
                     </div>
                   </div>
@@ -299,7 +334,7 @@ export default function LandingPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 relative overflow-hidden">
+      <section className="section-padding relative overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-600 via-emerald-700 to-gold-600"></div>
         
@@ -310,17 +345,17 @@ export default function LandingPage() {
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-white/5 rounded-full blur-3xl animate-pulse"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="container-max-width container-padding text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 text-shadow">
+            <h2 className="mb-6 text-white text-shadow">
               Ready to Build Your Professional Ecosystem?
             </h2>
-            <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lead text-emerald-100 mb-8 container-max-width-sm">
               Join thousands of professionals who are already discovering meaningful connections through AI-powered matching.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -337,14 +372,14 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-12 relative overflow-hidden">
+      <footer className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white section-padding-sm relative overflow-hidden">
         {/* Background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute -top-10 -right-10 w-20 h-20 bg-emerald-500/10 rounded-full blur-xl animate-float"></div>
           <div className="absolute -bottom-10 -left-10 w-20 h-20 bg-gold-500/10 rounded-full blur-xl animate-float" style={{ animationDelay: '1s' }}></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="container-max-width container-padding relative z-10">
           <div className="text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

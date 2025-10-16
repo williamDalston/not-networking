@@ -185,10 +185,10 @@ export default function DashboardPage() {
       <div className="space-y-6">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+          <h1 className="mb-2">
             Welcome back, {user?.user_metadata?.full_name || 'there'}! 👋
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
+          <p className="text-lead text-gray-600 dark:text-gray-300">
             Here's what's happening in your professional ecosystem
           </p>
         </div>
@@ -206,8 +206,8 @@ export default function DashboardPage() {
                 <Users className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Total Connections</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.totalConnections}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Total Connections</p>
+                <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.totalConnections}</p>
               </div>
             </div>
           </motion.div>
@@ -223,8 +223,8 @@ export default function DashboardPage() {
                 <Brain className="h-6 w-6 text-sky-600 dark:text-sky-400" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">AI Matches</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.aiMatches}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">AI Matches</p>
+                <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.aiMatches}</p>
               </div>
             </div>
           </motion.div>
@@ -240,8 +240,8 @@ export default function DashboardPage() {
                 <Calendar className="h-6 w-6 text-violet-600 dark:text-violet-400" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Events</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.events}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Events</p>
+                <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.events}</p>
               </div>
             </div>
           </motion.div>
@@ -257,8 +257,8 @@ export default function DashboardPage() {
                 <TrendingUp className="h-6 w-6 text-gold-600 dark:text-gold-400" />
               </div>
               <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Growth Score</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{stats.growthScore}%</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">Growth Score</p>
+                <p className="text-xl font-bold text-gray-900 dark:text-white">{stats.growthScore}%</p>
               </div>
             </div>
           </motion.div>
@@ -277,7 +277,7 @@ export default function DashboardPage() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`py-3 px-4 rounded-lg font-medium text-sm flex items-center transition-all duration-200 ${
+                  className={`py-3 px-4 rounded-lg font-medium text-xs flex items-center transition-all duration-200 ${
                     activeTab === tab.id
                       ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-500/25'
                       : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-300 dark:hover:bg-gray-700'
