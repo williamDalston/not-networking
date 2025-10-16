@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default function sitemap() {
   const baseUrl = 'https://ecosystem-sam-ai.vercel.app'
   const currentDate = new Date().toISOString()
 
