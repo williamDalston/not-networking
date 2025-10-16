@@ -116,11 +116,6 @@ export default function LandingPage() {
         </div>
       </nav>
 
-      {/* Test CSS Loading */}
-      <div className="test-style">
-        CSS Test - If you see this with red background, CSS is loading correctly
-      </div>
-
       {/* Hero Section */}
       <section className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">

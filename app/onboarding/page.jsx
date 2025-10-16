@@ -1,13 +1,92 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Brain, Target, Users, Zap, Shield, TrendingUp, CheckCircle } from 'lucide-react'
+import { getCurrentUser } from '@/lib/auth'
+import { useToast } from '@/components/ui/toast'
 
 export default function OnboardingPage() {
   const [currentStep, setCurrentStep] = useState(0)
   const [answers, setAnswers] = useState({})
+  const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
+  const { addToast, ToastContainer } = useToast()
+
+  useEffect(() => {
+    // Check if user is authenticated
+    const checkAuth = async () => {
+      try {
+        const currentUser = await getCurrentUser()
+        if (!currentUser) {
+          router.push('/auth/signin')
+          return
+        }
+        setUser(currentUser)
+      } catch (error) {
+        console.error('Auth check failed:', error)
+        router.push('/auth/signin')
+      }
+    }
+    checkAuth()
+  }, [router])
+
+  const saveProgress = async (stepData) => {
+    if (!user) return
+    
+    try {
+      const response = await fetch('/api/onboarding/save-progress', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: user.id,
+          step: currentStep,
+          data: stepData
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to save progress')
+      }
+    } catch (error) {
+      console.error('Error saving progress:', error)
+      addToast('Failed to save progress', 'error')
+    }
+  }
+
+  const generateEmbeddings = async () => {
+    if (!user) return
+    
+    setLoading(true)
+    try {
+      const response = await fetch('/api/profile/embeddings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          userId: user.id
+        })
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to generate embeddings')
+      }
+
+      const result = await response.json()
+      addToast('Profile analysis complete! Generating your matches...', 'success')
+    } catch (error) {
+      console.error('Error generating embeddings:', error)
+      addToast('Failed to complete profile analysis', 'error')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   const steps = [
     {
@@ -207,9 +286,16 @@ export default function OnboardingPage() {
     }
   ]
 
-  const handleNext = () => {
+  const handleNext = async () => {
+    // Save current step progress
+    await saveProgress(answers)
+    
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
+    } else {
+      // Complete onboarding
+      await generateEmbeddings()
+      router.push('/dashboard')
     }
   }
 
@@ -315,13 +401,14 @@ export default function OnboardingPage() {
             </div>
 
             {isLastStep ? (
-              <Link
-                href="/dashboard"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-flex items-center"
+              <button
+                onClick={handleNext}
+                disabled={loading}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-medium transition-colors inline-flex items-center disabled:opacity-50"
               >
-                Go to Dashboard
+                {loading ? 'Analyzing Profile...' : 'Complete Setup'}
                 <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
+              </button>
             ) : (
               <button
                 onClick={handleNext}
@@ -334,6 +421,8 @@ export default function OnboardingPage() {
           </div>
         </motion.div>
       </div>
+      
+      <ToastContainer />
     </div>
   )
 }

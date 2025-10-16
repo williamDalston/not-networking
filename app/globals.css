@@ -2,13 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Test styles to ensure CSS is loading */
-.test-style {
-  background-color: red;
-  color: white;
-  padding: 10px;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
