@@ -73,9 +73,7 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 142.1 76.2% 36.3%;
   }
-}
-
-@layer base {
+  
   * {
     @apply border-gray-200;
   }
