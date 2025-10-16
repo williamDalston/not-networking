@@ -26,10 +26,13 @@ export default function MatchCard({ match, onAccept, onDecline, onViewDetails })
   }
 
   return (
-    <Card variant="glass" className="w-full max-w-md mx-auto card-hover group">
-      <CardHeader className="pb-4">
+    <Card variant="glass" className="w-full max-w-md mx-auto card-hover group relative overflow-hidden">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 to-gold-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      
+      <CardHeader className="pb-4 relative z-10">
         <div className="flex items-center space-x-4">
-          <div className="w-12 h-12 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900 dark:to-emerald-800 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
+          <div className="w-12 h-12 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900 dark:to-emerald-800 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200 shadow-lg">
             <span className="text-emerald-600 dark:text-emerald-400 font-semibold text-lg">
               {otherUser?.full_name?.charAt(0) || '?'}
             </span>
@@ -52,7 +55,7 @@ export default function MatchCard({ match, onAccept, onDecline, onViewDetails })
         </div>
       </CardHeader>
 
-      <CardContent className="pt-0">
+      <CardContent className="pt-0 relative z-10">
         <div className="space-y-4">
           <div>
             <h4 className="font-medium text-gray-900 mb-2">Why this match?</h4>

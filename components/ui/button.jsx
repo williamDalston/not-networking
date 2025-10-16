@@ -10,12 +10,12 @@ const Button = forwardRef(({ className, variant = 'default', size = 'default', .
           // Primary variants
           'bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-700 hover:to-emerald-600 text-white shadow-lg hover:shadow-emerald-500/25': variant === 'default',
           'bg-gradient-to-r from-emerald-500 via-emerald-600 to-gold-500 hover:from-emerald-600 hover:via-emerald-700 hover:to-gold-600 text-white shadow-lg hover:shadow-emerald-500/25': variant === 'gradient',
-          'bg-gradient-to-r from-emerald-500 via-emerald-600 to-gold-500 hover:from-emerald-600 hover:via-emerald-700 hover:to-gold-600 text-white shadow-lg hover:shadow-emerald-500/25 relative overflow-hidden': variant === 'magic',
+          'bg-gradient-to-r from-emerald-500 via-emerald-600 to-gold-500 hover:from-emerald-600 hover:via-emerald-700 hover:to-gold-600 text-white shadow-lg hover:shadow-emerald-500/25 relative overflow-hidden group': variant === 'magic',
           
           // Secondary variants
-          'bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 shadow-sm hover:shadow-gray-500/10': variant === 'secondary',
-          'bg-gray-100 hover:bg-gray-200 text-gray-900': variant === 'ghost',
-          'border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-700 hover:text-gray-900': variant === 'outline',
+          'bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 shadow-sm hover:shadow-gray-500/10 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-100 dark:border-gray-600': variant === 'secondary',
+          'bg-gray-100 hover:bg-gray-200 text-gray-900 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-gray-100': variant === 'ghost',
+          'border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-700 hover:text-gray-900 dark:border-gray-600 dark:hover:bg-gray-800 dark:text-gray-300 dark:hover:text-gray-100': variant === 'outline',
           
           // Accent variants
           'bg-gradient-to-r from-violet-600 to-violet-500 hover:from-violet-700 hover:to-violet-600 text-white shadow-lg hover:shadow-violet-500/25': variant === 'violet',
@@ -26,7 +26,7 @@ const Button = forwardRef(({ className, variant = 'default', size = 'default', .
           'bg-gradient-to-r from-red-600 to-red-500 hover:from-red-700 hover:to-red-600 text-white shadow-lg hover:shadow-red-500/25': variant === 'destructive',
           
           // Link
-          'text-emerald-600 hover:text-emerald-700 underline-offset-4 hover:underline': variant === 'link'
+          'text-emerald-600 hover:text-emerald-700 underline-offset-4 hover:underline dark:text-emerald-400 dark:hover:text-emerald-300': variant === 'link'
         },
         {
           'h-10 py-2 px-4': size === 'default',

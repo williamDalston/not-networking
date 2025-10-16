@@ -14,7 +14,7 @@ export default function OnboardingPage() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(false)
   const router = useRouter()
-  const { addToast, ToastContainer } = useToast()
+  const { addToast } = useToast()
 
   useEffect(() => {
     // Check if user is authenticated
@@ -308,20 +308,27 @@ export default function OnboardingPage() {
   const isLastStep = currentStep === steps.length - 1
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-gold-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+    <div className="min-h-screen gradient-bg-animated">
       {/* Navigation */}
-      <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+      <nav className="glass border-b border-white/20 dark:border-gray-700/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Link href="/" className="flex items-center">
-                <h1 className="text-2xl font-bold gradient-text">🌱 The Ecosystem</h1>
+              <Link href="/" className="flex items-center group">
+                <motion.div
+                  className="text-2xl mr-2 group-hover:scale-110 transition-transform duration-200"
+                  animate={{ rotate: [0, 5, -5, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                >
+                  🌱
+                </motion.div>
+                <h1 className="text-2xl font-bold gradient-text-emerald">The Ecosystem</h1>
               </Link>
             </div>
             
             <div className="flex items-center space-x-4">
-              <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                <ArrowLeft className="h-4 w-4 inline mr-1" />
+              <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+                <ArrowLeft className="h-4 w-4 mr-1" />
                 Back to Home
               </Link>
             </div>
@@ -330,7 +337,7 @@ export default function OnboardingPage() {
       </nav>
 
       {/* Progress Bar */}
-      <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+      <div className="glass border-b border-white/20 dark:border-gray-700/20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm font-medium text-gray-600 dark:text-gray-300">
@@ -341,10 +348,12 @@ export default function OnboardingPage() {
             </span>
           </div>
           <div className="w-full bg-gray-200 dark:bg-gray-600 rounded-full h-2">
-            <div 
-              className="bg-emerald-600 h-2 rounded-full transition-all duration-300" 
-              style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
-            ></div>
+            <motion.div 
+              className="bg-gradient-to-r from-emerald-500 to-emerald-600 h-2 rounded-full shadow-lg shadow-emerald-500/25" 
+              initial={{ width: 0 }}
+              animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            />
           </div>
         </div>
       </div>
@@ -359,12 +368,22 @@ export default function OnboardingPage() {
           transition={{ duration: 0.3 }}
         >
           <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-4xl font-bold gradient-text-emerald mb-2"
+            >
               {steps[currentStep].title}
-            </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300">
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-xl text-gray-600 dark:text-gray-300"
+            >
               {steps[currentStep].subtitle}
-            </p>
+            </motion.p>
           </div>
 
           <div className="mb-8">
@@ -422,7 +441,6 @@ export default function OnboardingPage() {
         </motion.div>
       </div>
       
-      <ToastContainer />
     </div>
   )
 }

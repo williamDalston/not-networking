@@ -24,7 +24,7 @@ export default function DashboardPage() {
   })
   const [loading, setLoading] = useState(true)
   const router = useRouter()
-  const { addToast, ToastContainer } = useToast()
+  const { addToast } = useToast()
 
   useEffect(() => {
     // Check authentication and load data
@@ -515,8 +515,6 @@ export default function DashboardPage() {
           </div>
         )}
       </div>
-      
-      <ToastContainer />
     </DashboardLayout>
   )
 }

@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server'
-import { supabaseAdmin } from '@/lib/supabase'
-import { generateMatches, getMatchesForUser, updateMatchStatus } from '@/lib/matching'
+import { withAuth, withRateLimit } from '@/lib/middleware'
+import { matchingService } from '@/lib/services'
 import { createErrorResponse, validateRequired } from '@/lib/error-handler'
 
-export async function GET(request) {
+async function getMatches(request) {
   try {
     const { searchParams } = new URL(request.url)
     const userId = searchParams.get('userId')
@@ -12,7 +12,7 @@ export async function GET(request) {
       return createErrorResponse(new Error('User ID is required'))
     }
 
-    const matches = await getMatchesForUser(userId)
+    const matches = await matchingService.getMatchesForUser(userId)
 
     return NextResponse.json({ matches })
   } catch (error) {
@@ -20,14 +20,14 @@ export async function GET(request) {
   }
 }
 
-export async function POST(request) {
+async function generateMatches(request) {
   try {
     const body = await request.json()
     const { userId, limit = 3 } = body
 
     validateRequired(body, ['userId'])
 
-    const matches = await generateMatches(userId, limit)
+    const matches = await matchingService.generateMatches(userId, limit)
 
     return NextResponse.json({ 
       matches,
@@ -38,3 +38,7 @@ export async function POST(request) {
     return createErrorResponse(error)
   }
 }
+
+// Apply authentication and rate limiting
+export const GET = withAuth(withRateLimit(50)(getMatches))
+export const POST = withAuth(withRateLimit(10)(generateMatches))

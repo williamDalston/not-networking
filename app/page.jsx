@@ -87,7 +87,7 @@ export default function LandingPage() {
 
             <div className="hidden md:block">
               <div className="ml-4 flex items-center space-x-4">
-                <Link href="/auth/login" className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                <Link href="/auth/signin" className="text-gray-700 dark:text-gray-300 hover:text-emerald-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                   Sign In
                 </Link>
                 <Link href="/auth/signup" className="btn-primary text-sm">
