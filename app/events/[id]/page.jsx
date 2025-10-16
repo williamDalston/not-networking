@@ -17,7 +17,7 @@ export default function EventDetailPage({ params }) {
   const [loading, setLoading] = useState(true)
   const [rsvpLoading, setRsvpLoading] = useState(false)
   const router = useRouter()
-  const { addToast, ToastContainer } = useToast()
+  const { addToast } = useToast()
 
   useEffect(() => {
     // Check authentication and load event data
@@ -375,7 +375,6 @@ export default function EventDetailPage({ params }) {
         </div>
       </div>
       
-      <ToastContainer />
     </DashboardLayout>
   )
 }

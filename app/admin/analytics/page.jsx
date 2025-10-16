@@ -17,7 +17,7 @@ export default function AdminAnalyticsPage() {
   const [loading, setLoading] = useState(true)
   const [runningMatching, setRunningMatching] = useState(false)
   const router = useRouter()
-  const { addToast, ToastContainer } = useToast()
+  const { addToast } = useToast()
 
   useEffect(() => {
     // Check authentication and load admin data
@@ -351,7 +351,6 @@ export default function AdminAnalyticsPage() {
         </Card>
       </div>
       
-      <ToastContainer />
     </DashboardLayout>
   )
 }

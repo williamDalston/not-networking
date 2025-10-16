@@ -17,7 +17,7 @@ export default function MatchDetailPage({ params }) {
   const [loading, setLoading] = useState(true)
   const [feedbackLoading, setFeedbackLoading] = useState(false)
   const router = useRouter()
-  const { addToast, ToastContainer } = useToast()
+  const { addToast } = useToast()
 
   useEffect(() => {
     // Check authentication and load match data
@@ -392,7 +392,6 @@ export default function MatchDetailPage({ params }) {
         </div>
       </div>
       
-      <ToastContainer />
     </DashboardLayout>
   )
 }

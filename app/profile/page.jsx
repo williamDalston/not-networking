@@ -31,7 +31,7 @@ export default function ProfilePage() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const router = useRouter()
-  const { addToast, ToastContainer } = useToast()
+  const { addToast } = useToast()
 
   useEffect(() => {
     // Check authentication and load profile data
@@ -497,7 +497,6 @@ export default function ProfilePage() {
         </div>
       </div>
       
-      <ToastContainer />
     </DashboardLayout>
   )
 }

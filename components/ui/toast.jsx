@@ -30,7 +30,7 @@ export function ToastProvider({ children }) {
   return (
     <ToastContext.Provider value={{ addToast, removeToast }}>
       {children}
-      <ToastContainer toasts={toasts} removeToast={removeToast} />
+      <ToastDisplay toasts={toasts} removeToast={removeToast} />
     </ToastContext.Provider>
   )
 }
@@ -43,7 +43,7 @@ export function useToast() {
   return context
 }
 
-function ToastContainer({ toasts, removeToast }) {
+function ToastDisplay({ toasts, removeToast }) {
   return (
     <div className="fixed top-4 right-4 z-50 space-y-2">
       <AnimatePresence>
@@ -94,18 +94,5 @@ function Toast({ toast, onRemove }) {
         <X className="h-4 w-4" />
       </button>
     </motion.div>
-  )
-}
-
-// Legacy component for backward compatibility
-export function ToastContainer({ toasts = [], removeToast = () => {} }) {
-  return (
-    <div className="fixed top-4 right-4 z-50 space-y-2">
-      <AnimatePresence>
-        {toasts.map((toast) => (
-          <Toast key={toast.id} toast={toast} onRemove={removeToast} />
-        ))}
-      </AnimatePresence>
-    </div>
   )
 }

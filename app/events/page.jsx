@@ -17,7 +17,7 @@ export default function EventsPage() {
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('all') // all, upcoming, past
   const router = useRouter()
-  const { addToast, ToastContainer } = useToast()
+  const { addToast } = useToast()
 
   useEffect(() => {
     // Check authentication and load events
@@ -305,7 +305,6 @@ export default function EventsPage() {
         )}
       </div>
       
-      <ToastContainer />
     </DashboardLayout>
   )
 }
